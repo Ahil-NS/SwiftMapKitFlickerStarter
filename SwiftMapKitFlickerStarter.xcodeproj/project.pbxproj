@@ -7,17 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0392A91DACC578CCC6CA66D4 /* Pods_SwiftMapKitFlickerStarter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C87A156A51ED791EF7641B /* Pods_SwiftMapKitFlickerStarter.framework */; };
 		FA25E22821F5A38B0047732D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA25E22721F5A38B0047732D /* AppDelegate.swift */; };
-		FA25E22A21F5A38B0047732D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA25E22921F5A38B0047732D /* ViewController.swift */; };
+		FA25E22A21F5A38B0047732D /* MainMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA25E22921F5A38B0047732D /* MainMapVC.swift */; };
 		FA25E22D21F5A38B0047732D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA25E22B21F5A38B0047732D /* Main.storyboard */; };
 		FA25E22F21F5A38D0047732D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA25E22E21F5A38D0047732D /* Assets.xcassets */; };
 		FA25E23221F5A38D0047732D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA25E23021F5A38D0047732D /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3CA18EE7167C71A89AA0C824 /* Pods-SwiftMapKitFlickerStarter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftMapKitFlickerStarter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftMapKitFlickerStarter/Pods-SwiftMapKitFlickerStarter.debug.xcconfig"; sourceTree = "<group>"; };
+		CC5AEB9E4B58BC767B4A05D5 /* Pods-SwiftMapKitFlickerStarter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftMapKitFlickerStarter.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftMapKitFlickerStarter/Pods-SwiftMapKitFlickerStarter.release.xcconfig"; sourceTree = "<group>"; };
+		D5C87A156A51ED791EF7641B /* Pods_SwiftMapKitFlickerStarter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftMapKitFlickerStarter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA25E22421F5A38B0047732D /* SwiftMapKitFlickerStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftMapKitFlickerStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA25E22721F5A38B0047732D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FA25E22921F5A38B0047732D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FA25E22921F5A38B0047732D /* MainMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapVC.swift; sourceTree = "<group>"; };
 		FA25E22C21F5A38B0047732D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA25E22E21F5A38D0047732D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA25E23121F5A38D0047732D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0392A91DACC578CCC6CA66D4 /* Pods_SwiftMapKitFlickerStarter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3EC097F8D7670D88CD492565 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D5C87A156A51ED791EF7641B /* Pods_SwiftMapKitFlickerStarter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8DD1863F2D273A8E993899DB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3CA18EE7167C71A89AA0C824 /* Pods-SwiftMapKitFlickerStarter.debug.xcconfig */,
+				CC5AEB9E4B58BC767B4A05D5 /* Pods-SwiftMapKitFlickerStarter.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FA25E21B21F5A38B0047732D = {
 			isa = PBXGroup;
 			children = (
 				FA25E22621F5A38B0047732D /* SwiftMapKitFlickerStarter */,
 				FA25E22521F5A38B0047732D /* Products */,
+				8DD1863F2D273A8E993899DB /* Pods */,
+				3EC097F8D7670D88CD492565 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +78,22 @@
 		FA25E22621F5A38B0047732D /* SwiftMapKitFlickerStarter */ = {
 			isa = PBXGroup;
 			children = (
+				FA25E23921F5AE130047732D /* Controllers */,
 				FA25E22721F5A38B0047732D /* AppDelegate.swift */,
-				FA25E22921F5A38B0047732D /* ViewController.swift */,
 				FA25E22B21F5A38B0047732D /* Main.storyboard */,
 				FA25E22E21F5A38D0047732D /* Assets.xcassets */,
 				FA25E23021F5A38D0047732D /* LaunchScreen.storyboard */,
 				FA25E23321F5A38D0047732D /* Info.plist */,
 			);
 			path = SwiftMapKitFlickerStarter;
+			sourceTree = "<group>";
+		};
+		FA25E23921F5AE130047732D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA25E22921F5A38B0047732D /* MainMapVC.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +103,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA25E23621F5A38D0047732D /* Build configuration list for PBXNativeTarget "SwiftMapKitFlickerStarter" */;
 			buildPhases = (
+				09F45014A130B1CCC07D4CE8 /* [CP] Check Pods Manifest.lock */,
 				FA25E22021F5A38B0047732D /* Sources */,
 				FA25E22121F5A38B0047732D /* Frameworks */,
 				FA25E22221F5A38B0047732D /* Resources */,
+				23A21B13B28DEB3FA25B9DC6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,12 +164,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		09F45014A130B1CCC07D4CE8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftMapKitFlickerStarter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		23A21B13B28DEB3FA25B9DC6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftMapKitFlickerStarter/Pods-SwiftMapKitFlickerStarter-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftMapKitFlickerStarter/Pods-SwiftMapKitFlickerStarter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FA25E22021F5A38B0047732D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA25E22A21F5A38B0047732D /* ViewController.swift in Sources */,
+				FA25E22A21F5A38B0047732D /* MainMapVC.swift in Sources */,
 				FA25E22821F5A38B0047732D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +355,7 @@
 		};
 		FA25E23721F5A38D0047732D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CA18EE7167C71A89AA0C824 /* Pods-SwiftMapKitFlickerStarter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +374,7 @@
 		};
 		FA25E23821F5A38D0047732D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC5AEB9E4B58BC767B4A05D5 /* Pods-SwiftMapKitFlickerStarter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
