@@ -15,6 +15,7 @@ class PhotoService{
     static let instance = PhotoService()
     
     private var imageUrlArray = [String]()
+    private var imageArray = [UIImage]()
     
     func retriveUrls(forAnnotation annotation: DroppablePin, handler: @escaping (_ status: Bool) -> ()){
         
@@ -30,6 +31,31 @@ class PhotoService{
                 self.imageUrlArray.append(postUrl)
             }
             handler(true)
+        }
+    }
+    
+    //@escaping - the value can be passes outside the function
+    func retriveImages(handler: @escaping (_ status: Bool) -> ()){
+        imageArray = []
+        
+        for url in imageUrlArray{
+            Alamofire.request(url).responseImage { (response) in
+                guard let img = response.result.value else{return}
+                self.imageArray.append(img)
+                
+                if(self.imageArray.count == self.imageUrlArray.count){
+                    handler(true)
+                }
+            }
+        }
+        
+    }
+    
+    func cancelAllSession(){
+        Alamofire.SessionManager.default.session.getTasksWithCompletionHandler { (sessionDataTask, uploadData, downloadData) in
+            sessionDataTask.forEach({$0.cancel()})
+            uploadData.forEach({$0.cancel()})
+            downloadData.forEach({$0.cancel()})
         }
     }
     

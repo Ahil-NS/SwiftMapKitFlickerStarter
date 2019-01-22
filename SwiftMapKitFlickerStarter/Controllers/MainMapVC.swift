@@ -91,6 +91,7 @@ class MainMapVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func animateViewDown() {
+        PhotoService.instance.cancelAllSession()
         pullHeightConstraint.constant = 0
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
@@ -149,6 +150,7 @@ extension MainMapVC: MKMapViewDelegate{
         removePin()
         removeSpinner()
         removeProgressLabel()
+        PhotoService.instance.cancelAllSession()
         
         animateViewUp()
         addSwipe()
@@ -169,7 +171,12 @@ extension MainMapVC: MKMapViewDelegate{
         
         PhotoService.instance.retriveUrls(forAnnotation: annotation) { (finished) in
             if(finished){
-                print("yesss", PhotoService.instance.getImageUrls())
+                PhotoService.instance.retriveImages(handler: { (finished) in
+                    if(finished){
+                        self.removeSpinner()
+                        self.removeProgressLabel()
+                    }
+                })
             }
         }
     }
