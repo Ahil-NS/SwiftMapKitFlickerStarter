@@ -14,7 +14,7 @@ import Alamofire
 import AlamofireImage
 
 class MainMapVC: UIViewController, UIGestureRecognizerDelegate {
-
+    
     private let locationManager = CLLocationManager()
     private let authorizationStatus = CLLocationManager.authorizationStatus()
     private let regionRadius: Double = 1000
@@ -35,6 +35,10 @@ class MainMapVC: UIViewController, UIGestureRecognizerDelegate {
         return label
     }()
     
+    private var collectionView: UICollectionView?
+    var flowLayout = UICollectionViewFlowLayout()
+    
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var pullHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var pullUpView: UIView!
@@ -46,12 +50,23 @@ class MainMapVC: UIViewController, UIGestureRecognizerDelegate {
         locationManager.delegate = self
         configureLocationServices()
         addDoubleTap()
+        configureCollectionView()
+        
+        
     }
-
+    
     @IBAction func centerMapButtonPressed(_ sender: Any) {
         if(authorizationStatus == .authorizedAlways || authorizationStatus == .authorizedWhenInUse){
             centerMapOnUserLocation()
         }
+    }
+    
+    private func configureCollectionView(){
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
+        collectionView?.register(PhotoCell.self, forCellWithReuseIdentifier: "photoCell")
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
+        pullUpView.addSubview(collectionView!)
     }
     
     private func addSwipe() {
@@ -67,7 +82,7 @@ class MainMapVC: UIViewController, UIGestureRecognizerDelegate {
         doubleTap.delegate = self
         mapView.addGestureRecognizer(doubleTap)
     }
-
+    
     
     private func animateViewUp() {
         pullHeightConstraint.constant = 300
@@ -87,18 +102,18 @@ class MainMapVC: UIViewController, UIGestureRecognizerDelegate {
     private func showSpinner(){
         spinner.center = CGPoint(x: (screenSize.width/2) - ((spinner.frame.width)/2), y: 150)
         spinner.startAnimating()
-        pullUpView.addSubview(spinner)
+        collectionView?.addSubview(spinner)
     }
     
     private func removeSpinner(){
-       spinner.removeFromSuperview()
+        spinner.removeFromSuperview()
         print("remove spinner")
     }
     
     private func showProgressLabel(){
         progressLabel.frame = CGRect(x: (screenSize.width/2) - 100, y: 175, width: 200, height: 50)
         progressLabel.text = "Progressing...."
-        pullUpView.addSubview(progressLabel)
+        collectionView?.addSubview(progressLabel)
     }
     
     private func removeProgressLabel(){
@@ -125,7 +140,7 @@ extension MainMapVC: MKMapViewDelegate{
     
     func centerMapOnUserLocation(){
         guard let coordinate = locationManager.location?.coordinate else{return}
-       
+        
         let coordinateRegion = MKCoordinateRegion.init(center: coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
     }
@@ -178,3 +193,16 @@ extension MainMapVC: CLLocationManagerDelegate{
     
 }
 
+extension MainMapVC: UICollectionViewDelegate,UICollectionViewDataSource{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCell else{return UICollectionViewCell()}
+        return cell
+    }
+    
+    
+}
