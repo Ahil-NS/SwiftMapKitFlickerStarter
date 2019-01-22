@@ -65,6 +65,8 @@ class MainMapVC: UIViewController, UIGestureRecognizerDelegate {
         collectionView?.register(PhotoCell.self, forCellWithReuseIdentifier: "photoCell")
         collectionView?.delegate = self
         collectionView?.dataSource = self
+        collectionView?.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+        
         pullUpView.addSubview(collectionView!)
     }
     
@@ -152,6 +154,10 @@ extension MainMapVC: MKMapViewDelegate{
         removeProgressLabel()
         PhotoService.instance.cancelAllSession()
         
+        PhotoService.instance.clearImageArray()
+        PhotoService.instance.clearImageUrlArray()
+        collectionView?.reloadData()
+        
         animateViewUp()
         addSwipe()
         showSpinner()
@@ -167,14 +173,14 @@ extension MainMapVC: MKMapViewDelegate{
         let coordinateRegion = MKCoordinateRegion(center: touchCoordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
         
-        print(flickrUrl(forApiKey: apiKey, withAnnotation: annotation, andNumberOfPhotos: 10))
-        
         PhotoService.instance.retriveUrls(forAnnotation: annotation) { (finished) in
             if(finished){
                 PhotoService.instance.retriveImages(handler: { (finished) in
                     if(finished){
                         self.removeSpinner()
                         self.removeProgressLabel()
+                        self.collectionView?.reloadData()
+                        
                     }
                 })
             }
@@ -209,13 +215,22 @@ extension MainMapVC: CLLocationManagerDelegate{
 extension MainMapVC: UICollectionViewDelegate,UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        print("ddd",PhotoService.instance.getImageArray().count)
+        return PhotoService.instance.getImageArray().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCell else{return UICollectionViewCell()}
+        let imgFromIndex = PhotoService.instance.getImageArray()[indexPath.row]
+        let imageView = UIImageView(image: imgFromIndex)
+        cell.addSubview(imageView)
         return cell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "PopVC") as? PopVC else{return}
+        popVC.initData(forImage: PhotoService.instance.getImageArray()[indexPath.row])
+        present(popVC, animated: true, completion: nil)
+        
+    }
 }

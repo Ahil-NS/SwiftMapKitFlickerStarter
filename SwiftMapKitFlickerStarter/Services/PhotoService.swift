@@ -19,9 +19,8 @@ class PhotoService{
     
     func retriveUrls(forAnnotation annotation: DroppablePin, handler: @escaping (_ status: Bool) -> ()){
         
-        imageUrlArray = []
         
-        Alamofire.request(flickrUrl(forApiKey: apiKey, withAnnotation: annotation, andNumberOfPhotos: 10)).responseJSON { (response) in
+        Alamofire.request(flickrUrl(forApiKey: apiKey, withAnnotation: annotation, andNumberOfPhotos: 30)).responseJSON { (response) in
             
             guard let json = response.result.value as? Dictionary<String, AnyObject> else { return }
             let photosDict = json["photos"] as! Dictionary<String, AnyObject>
@@ -36,7 +35,6 @@ class PhotoService{
     
     //@escaping - the value can be passes outside the function
     func retriveImages(handler: @escaping (_ status: Bool) -> ()){
-        imageArray = []
         
         for url in imageUrlArray{
             Alamofire.request(url).responseImage { (response) in
@@ -61,5 +59,15 @@ class PhotoService{
     
     func getImageUrls() -> [String]{
         return imageUrlArray
+    }
+    
+    func getImageArray() -> [UIImage]{
+        return imageArray
+    }
+    func clearImageArray() {
+        imageArray = []
+    }
+    func clearImageUrlArray(){
+        imageUrlArray = []
     }
 }
