@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0392A91DACC578CCC6CA66D4 /* Pods_SwiftMapKitFlickerStarter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C87A156A51ED791EF7641B /* Pods_SwiftMapKitFlickerStarter.framework */; };
 		FA1E96E921F70313008DED1F /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E96E821F70313008DED1F /* PhotoCell.swift */; };
+		FA1E96EC21F708BF008DED1F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E96EB21F708BF008DED1F /* Constants.swift */; };
+		FA1E96EF21F70D1D008DED1F /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E96EE21F70D1D008DED1F /* PhotoService.swift */; };
+		FA1E96F121F71E48008DED1F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E96F021F71E48008DED1F /* Keys.swift */; };
 		FA25E22821F5A38B0047732D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA25E22721F5A38B0047732D /* AppDelegate.swift */; };
 		FA25E22A21F5A38B0047732D /* MainMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA25E22921F5A38B0047732D /* MainMapVC.swift */; };
 		FA25E22D21F5A38B0047732D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA25E22B21F5A38B0047732D /* Main.storyboard */; };
@@ -22,6 +25,9 @@
 		CC5AEB9E4B58BC767B4A05D5 /* Pods-SwiftMapKitFlickerStarter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftMapKitFlickerStarter.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftMapKitFlickerStarter/Pods-SwiftMapKitFlickerStarter.release.xcconfig"; sourceTree = "<group>"; };
 		D5C87A156A51ED791EF7641B /* Pods_SwiftMapKitFlickerStarter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftMapKitFlickerStarter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1E96E821F70313008DED1F /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		FA1E96EB21F708BF008DED1F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FA1E96EE21F70D1D008DED1F /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
+		FA1E96F021F71E48008DED1F /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		FA25E22421F5A38B0047732D /* SwiftMapKitFlickerStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftMapKitFlickerStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA25E22721F5A38B0047732D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA25E22921F5A38B0047732D /* MainMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapVC.swift; sourceTree = "<group>"; };
@@ -69,6 +75,30 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		FA1E96EA21F708A9008DED1F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				FA1E96EB21F708BF008DED1F /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		FA1E96ED21F70CDC008DED1F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FA1E96EE21F70D1D008DED1F /* PhotoService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		FA1E971321F7209E008DED1F /* Personal */ = {
+			isa = PBXGroup;
+			children = (
+				FA1E96F021F71E48008DED1F /* Keys.swift */,
+			);
+			path = Personal;
+			sourceTree = "<group>";
+		};
 		FA25E21B21F5A38B0047732D = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +120,9 @@
 		FA25E22621F5A38B0047732D /* SwiftMapKitFlickerStarter */ = {
 			isa = PBXGroup;
 			children = (
+				FA1E971321F7209E008DED1F /* Personal */,
+				FA1E96ED21F70CDC008DED1F /* Services */,
+				FA1E96EA21F708A9008DED1F /* Utilities */,
 				FA1E96E721F702F8008DED1F /* Cells */,
 				FA25E23B21F5D5C70047732D /* View */,
 				FA25E23921F5AE130047732D /* Controllers */,
@@ -232,8 +265,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA1E96EC21F708BF008DED1F /* Constants.swift in Sources */,
 				FA1E96E921F70313008DED1F /* PhotoCell.swift in Sources */,
+				FA1E96EF21F70D1D008DED1F /* PhotoService.swift in Sources */,
 				FA25E22A21F5A38B0047732D /* MainMapVC.swift in Sources */,
+				FA1E96F121F71E48008DED1F /* Keys.swift in Sources */,
 				FA25E23D21F5D5D30047732D /* DroppablePin.swift in Sources */,
 				FA25E22821F5A38B0047732D /* AppDelegate.swift in Sources */,
 			);

@@ -52,7 +52,6 @@ class MainMapVC: UIViewController, UIGestureRecognizerDelegate {
         addDoubleTap()
         configureCollectionView()
         
-        
     }
     
     @IBAction func centerMapButtonPressed(_ sender: Any) {
@@ -166,6 +165,13 @@ extension MainMapVC: MKMapViewDelegate{
         let coordinateRegion = MKCoordinateRegion(center: touchCoordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
         
+        print(flickrUrl(forApiKey: apiKey, withAnnotation: annotation, andNumberOfPhotos: 10))
+        
+        PhotoService.instance.retriveUrls(forAnnotation: annotation) { (finished) in
+            if(finished){
+                print("yesss", PhotoService.instance.getImageUrls())
+            }
+        }
     }
     
     func removePin() {
